@@ -9,16 +9,26 @@ import java.util.Set;
 @Data
 @Entity
 @EqualsAndHashCode()
+@Table(name = "movie")
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "movie_id")
     private Long id;
-    private String title;
-    private String poster;
-    private String genre;
-    private Integer durationInMinutes;
 
-    @OneToMany(mappedBy = "movie")
-    private Set<Show> shows;
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "poster")
+    private String poster;
+
+    @Column(name = "genre")
+    private String genre;
+
+    @Column(name = "duration")
+    private Integer duration;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private Set<Screening> screenings;
 }

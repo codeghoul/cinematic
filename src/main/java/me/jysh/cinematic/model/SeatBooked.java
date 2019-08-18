@@ -8,10 +8,12 @@ import javax.persistence.*;
 @Data
 @Entity
 @EqualsAndHashCode()
+@Table(name = "seat_booked")
 public class SeatBooked{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "seat_booked_id")
     private Long id;
 
     @ManyToOne
@@ -23,6 +25,6 @@ public class SeatBooked{
     private Booking booking;
 
     @ManyToOne
-    @JoinColumn(name = "show_id")
-    private Show show;
+    @JoinColumn(name = "screening_id")
+    private Screening screening;
 }

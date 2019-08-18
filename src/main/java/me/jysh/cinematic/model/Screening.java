@@ -5,15 +5,18 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Set;
 
 @Data
 @Entity
 @EqualsAndHashCode()
-public class Show {
+@Table(name = "screening")
+public class Screening {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "screening_id")
     private Long id;
 
     @ManyToOne
@@ -24,12 +27,18 @@ public class Show {
     @JoinColumn(name = "auditorium_id")
     private Auditorium auditorium;
 
-    @ManyToOne
-    @JoinColumn(name = "show_timing_id")
-    private ShowTiming showTiming;
+    @Column(name = "date")
+    private LocalDate date;
 
-    @OneToMany(mappedBy = "show")
+    @Column(name = "start_time")
+    private LocalTime startTime;
+
+    @Column(name = "end_time")
+    private LocalTime endTime;
+
+    @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
     private Set<SeatBooked> bookedSeats;
 
-    private LocalDate date;
+    @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
+    private Set<Booking> bookings;
 }

@@ -3,6 +3,7 @@ package me.jysh.cinematic.service;
 import me.jysh.cinematic.model.Movie;
 import me.jysh.cinematic.model.Screening;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface MovieService {
@@ -13,4 +14,6 @@ public interface MovieService {
     List<Screening> getAllScreeningByMovieId(Long movie_id);
 
     void deleteMovie(Long movie_id);
+
+    List<Screening> getAllScreeningByMovieIdAndDate(Long movie_id, LocalDate localDate);
 }

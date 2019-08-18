@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Primary
@@ -41,6 +43,12 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void deleteMovie(Long movie_id) {
         movieRepository.deleteById(movie_id);
+    }
+
+    @Override
+    public List<Screening> getAllScreeningByMovieIdAndDate(Long movie_id, LocalDate date) {
+        Movie movie = getMovieById(movie_id);
+        return movie.getScreenings().stream().filter(screening -> screening.getDate().equals(date)).collect(Collectors.toList());
     }
 
 

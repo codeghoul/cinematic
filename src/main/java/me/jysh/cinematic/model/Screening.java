@@ -1,5 +1,7 @@
 package me.jysh.cinematic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -21,10 +23,12 @@ public class Screening {
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @JsonBackReference
     private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "auditorium_id")
+    @JsonBackReference
     private Auditorium auditorium;
 
     @Column(name = "date")
@@ -37,8 +41,10 @@ public class Screening {
     private LocalTime endTime;
 
     @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<SeatBooked> bookedSeats;
 
     @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Booking> bookings;
 }

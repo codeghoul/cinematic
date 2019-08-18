@@ -1,5 +1,7 @@
 package me.jysh.cinematic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -19,10 +21,12 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "screening_id")
+    @JsonBackReference
     private Screening screening;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     @Column(name = "booking_time")
@@ -35,5 +39,6 @@ public class Booking {
     private boolean isActive;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<SeatBooked> bookedSeats;
 }

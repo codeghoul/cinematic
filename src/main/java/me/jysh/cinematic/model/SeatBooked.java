@@ -1,5 +1,6 @@
 package me.jysh.cinematic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,13 +19,16 @@ public class SeatBooked{
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
+    @JsonBackReference
     private Seat seat;
 
     @ManyToOne
     @JoinColumn(name = "booking_id")
+    @JsonBackReference
     private Booking booking;
 
     @ManyToOne
     @JoinColumn(name = "screening_id")
+    @JsonBackReference
     private Screening screening;
 }

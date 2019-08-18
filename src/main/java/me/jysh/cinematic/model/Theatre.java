@@ -1,5 +1,8 @@
 package me.jysh.cinematic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +14,6 @@ import java.util.Set;
 @EqualsAndHashCode()
 @Table(name = "theatre")
 public class Theatre {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "theatre_id")
@@ -21,5 +23,6 @@ public class Theatre {
     private String name;
 
     @OneToMany(mappedBy = "theatre")
+    @JsonBackReference
     private Set<Auditorium> auditoriums;
 }

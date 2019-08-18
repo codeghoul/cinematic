@@ -14,7 +14,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode()
 @Table(name = "auditorium")
 public class Auditorium {
     @Id

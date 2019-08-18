@@ -15,7 +15,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode()
 @Table(name = "booking")
 public class Booking {
     @Id

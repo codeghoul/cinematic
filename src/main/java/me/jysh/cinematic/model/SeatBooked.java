@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode()
 @Table(name = "seat_booked")
 public class SeatBooked {
 

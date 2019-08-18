@@ -1,9 +1,13 @@
 package me.jysh.cinematic.controller;
 
 import me.jysh.cinematic.model.Movie;
+import me.jysh.cinematic.model.Screening;
 import me.jysh.cinematic.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,8 +22,21 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public List<Movie> getAllMovies() {
-        return movieService.getAllMovies();
+    public ResponseEntity<?> getAllMovies() {
+        List<Movie> movies = movieService.getAllMovies();
+        return ResponseEntity.status(HttpStatus.OK).body(movies);
+    }
+
+    @GetMapping("/movies/{movie_id}")
+    public ResponseEntity<?> getMovieById(@PathVariable Long movie_id) {
+        Movie movie = movieService.getMovieById(movie_id);
+        return ResponseEntity.status(HttpStatus.OK).body(movie);
+    }
+
+    @GetMapping("/movies/{movie_id}/screenings")
+    public ResponseEntity<?> getAllScreeningByMovieId(@PathVariable Long movie_id) {
+        List<Screening> screenings = movieService.getAllScreeningByMovieId(movie_id);
+        return ResponseEntity.status(HttpStatus.OK).body(screenings);
     }
 }
 

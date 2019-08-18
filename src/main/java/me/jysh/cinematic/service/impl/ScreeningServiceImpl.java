@@ -1,5 +1,6 @@
 package me.jysh.cinematic.service.impl;
 
+import me.jysh.cinematic.exception.ScreeningNotFoundException;
 import me.jysh.cinematic.model.Screening;
 import me.jysh.cinematic.repository.ScreeningRepository;
 import me.jysh.cinematic.service.ScreeningService;
@@ -22,5 +23,10 @@ public class ScreeningServiceImpl implements ScreeningService {
     @Override
     public List<Screening> getAllScreenings() {
         return screeningRepository.findAll();
+    }
+
+    @Override
+    public Screening getScreenById(Long screening_id) {
+        return screeningRepository.findById(screening_id).orElseThrow(() -> new ScreeningNotFoundException());
     }
 }

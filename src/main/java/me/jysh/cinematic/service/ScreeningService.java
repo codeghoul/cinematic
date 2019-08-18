@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ScreeningService {
     List<Screening> getAllScreenings();
+
+    Screening getScreenById(Long screening_id);
 }

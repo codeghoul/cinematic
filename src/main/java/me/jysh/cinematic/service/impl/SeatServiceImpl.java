@@ -21,6 +21,6 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public List<Seat> getAllSeats() {
-        return null;
+        return seatRepository.findAll();
     }
 }

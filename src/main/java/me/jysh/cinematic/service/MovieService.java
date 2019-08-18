@@ -11,4 +11,6 @@ public interface MovieService {
     Movie getMovieById(Long movie_id);
 
     List<Screening> getAllScreeningByMovieId(Long movie_id);
+
+    void deleteMovie(Long movie_id);
 }

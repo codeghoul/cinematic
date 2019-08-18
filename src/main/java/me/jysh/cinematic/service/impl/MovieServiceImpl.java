@@ -37,4 +37,11 @@ public class MovieServiceImpl implements MovieService {
         Movie movie = getMovieById(movie_id);
         return new ArrayList<>(movie.getScreenings());
     }
+
+    @Override
+    public void deleteMovie(Long movie_id) {
+        movieRepository.deleteById(movie_id);
+    }
+
+
 }

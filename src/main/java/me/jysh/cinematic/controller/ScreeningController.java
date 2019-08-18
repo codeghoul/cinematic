@@ -1,6 +1,7 @@
 package me.jysh.cinematic.controller;
 
 import me.jysh.cinematic.model.Screening;
+import me.jysh.cinematic.model.Seat;
 import me.jysh.cinematic.repository.ScreeningRepository;
 import me.jysh.cinematic.service.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,14 @@ public class ScreeningController {
 
     @GetMapping("/screenings/{screening_id}")
     public ResponseEntity<?> getScreenById(@PathVariable Long screening_id) {
-        Screening screening = screeningService.getScreenById(screening_id);
-
+        Screening screening = screeningService.getScreeningById(screening_id);
         return ResponseEntity.status(HttpStatus.OK).body(screening);
+    }
+
+    @GetMapping("/screenings/{screening_id}/seats")
+    public ResponseEntity<?> getSeatsByScreeningId(@PathVariable Long screening_id) {
+        List<Seat> seats = screeningService.getSeatsByScreeningId(screening_id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(seats);
     }
 }

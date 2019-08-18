@@ -22,4 +22,24 @@ public class TheatreServiceImpl implements TheatreService {
     public List<Theatre> getAllTheatres() {
         return theatreRepository.findAll();
     }
+
+    @Override
+    public Theatre getTheatreById(Long theatre_id) {
+        return null;
+    }
+
+    @Override
+    public Theatre pushTheatre(Theatre newTheatre) {
+        return null;
+    }
+
+    @Override
+    public Theatre updateTheatre(Theatre updatedTheatre, Long theatre_id) {
+        return null;
+    }
+
+    @Override
+    public void deleteTheatreById(Long theatre_id) {
+
+    }
 }

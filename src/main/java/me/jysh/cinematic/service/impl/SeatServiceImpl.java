@@ -23,4 +23,24 @@ public class SeatServiceImpl implements SeatService {
     public List<Seat> getAllSeats() {
         return seatRepository.findAll();
     }
+
+    @Override
+    public Seat getSeatById(Long seat_id) {
+        return null;
+    }
+
+    @Override
+    public Seat pushSeat(Seat newSeat) {
+        return null;
+    }
+
+    @Override
+    public Seat updateSeat(Seat updatedSeat, Long seat_id) {
+        return null;
+    }
+
+    @Override
+    public void deleteSeatById(Long seat_id) {
+
+    }
 }

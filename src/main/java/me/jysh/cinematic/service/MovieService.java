@@ -11,9 +11,13 @@ public interface MovieService {
 
     Movie getMovieById(Long movie_id);
 
-    List<Screening> getAllScreeningByMovieId(Long movie_id);
+    Movie pushMovie(Movie newMovie);
+
+    Movie updateMovie(Movie updatedMovie, Long movie_id);
 
     void deleteMovie(Long movie_id);
+
+    List<Screening> getAllScreeningByMovieId(Long movie_id);
 
     List<Screening> getAllScreeningByMovieIdAndDate(Long movie_id, LocalDate localDate);
 }

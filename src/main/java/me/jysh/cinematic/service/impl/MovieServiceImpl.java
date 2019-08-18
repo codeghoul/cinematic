@@ -35,6 +35,16 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public Movie pushMovie(Movie newMovie) {
+        return null;
+    }
+
+    @Override
+    public Movie updateMovie(Movie updatedMovie, Long movie_id) {
+        return null;
+    }
+
+    @Override
     public List<Screening> getAllScreeningByMovieId(Long movie_id) {
         Movie movie = getMovieById(movie_id);
         return new ArrayList<>(movie.getScreenings());
@@ -50,6 +60,4 @@ public class MovieServiceImpl implements MovieService {
         Movie movie = getMovieById(movie_id);
         return movie.getScreenings().stream().filter(screening -> screening.getDate().equals(date)).collect(Collectors.toList());
     }
-
-
 }

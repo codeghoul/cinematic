@@ -10,5 +10,9 @@ public interface ScreeningService {
 
     Screening getScreeningById(Long screening_id);
 
+    Screening pushScreening(Screening newScreening);
+
+    Screening updateScreening(Screening updatedScreening, Long screening_id);
+
     List<Seat> getSeatsByScreeningId(Long screening_id);
 }

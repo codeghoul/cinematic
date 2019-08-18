@@ -33,6 +33,16 @@ public class ScreeningServiceImpl implements ScreeningService {
     }
 
     @Override
+    public Screening pushScreening(Screening newScreening) {
+        return null;
+    }
+
+    @Override
+    public Screening updateScreening(Screening updatedScreening, Long screening_id) {
+        return null;
+    }
+
+    @Override
     public List<Seat> getSeatsByScreeningId(Long screening_id) {
         Screening screening = getScreeningById(screening_id);
         return new ArrayList<>(screening.getAuditorium().getSeats());

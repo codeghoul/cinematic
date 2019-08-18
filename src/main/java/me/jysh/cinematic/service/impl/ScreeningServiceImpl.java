@@ -4,11 +4,13 @@ import me.jysh.cinematic.model.Screening;
 import me.jysh.cinematic.repository.ScreeningRepository;
 import me.jysh.cinematic.service.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Primary
 public class ScreeningServiceImpl implements ScreeningService {
     private ScreeningRepository screeningRepository;
 

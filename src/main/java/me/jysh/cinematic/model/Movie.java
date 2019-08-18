@@ -1,5 +1,6 @@
 package me.jysh.cinematic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,6 +32,6 @@ public class Movie {
     private Integer duration;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private Set<Screening> screenings;
 }

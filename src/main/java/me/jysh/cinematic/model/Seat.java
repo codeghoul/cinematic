@@ -23,10 +23,10 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "auditorium_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Auditorium auditorium;
 
     @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private Set<SeatBooked> bookedSeats;
 }

@@ -1,5 +1,6 @@
 package me.jysh.cinematic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -29,8 +30,10 @@ public class Auditorium {
     private Theatre theatre;
 
     @OneToMany(mappedBy = "auditorium", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<Seat> seats;
 
     @OneToMany(mappedBy = "auditorium", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<Screening> screenings;
 }

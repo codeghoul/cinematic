@@ -1,5 +1,6 @@
 package me.jysh.cinematic.service.impl;
 
+import me.jysh.cinematic.exception.HousefullException;
 import me.jysh.cinematic.exception.ScreeningNotFoundException;
 import me.jysh.cinematic.model.Screening;
 import me.jysh.cinematic.model.Seat;
@@ -29,7 +30,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 
     @Override
     public Screening getScreeningById(Long screening_id) {
-        return screeningRepository.findById(screening_id).orElseThrow(() -> new ScreeningNotFoundException());
+        return screeningRepository.findById(screening_id).orElseThrow(ScreeningNotFoundException :: new);
     }
 
     @Override
@@ -45,6 +46,9 @@ public class ScreeningServiceImpl implements ScreeningService {
     @Override
     public List<Seat> getSeatsByScreeningId(Long screening_id) {
         Screening screening = getScreeningById(screening_id);
+        if(screening.getIsFull()) {
+            return new ArrayList<>();
+        }
         return new ArrayList<>(screening.getAuditorium().getSeats());
     }
 }

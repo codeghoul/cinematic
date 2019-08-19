@@ -43,6 +43,9 @@ public class Screening {
     @Column(name = "is_full")
     private Boolean isFull;
 
+    @Column(name = "price")
+    private Double price;
+
     @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<SeatBooked> bookedSeats;

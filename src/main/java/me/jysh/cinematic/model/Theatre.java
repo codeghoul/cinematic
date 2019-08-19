@@ -20,7 +20,7 @@ public class Theatre {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "theatre")
+    @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Auditorium> auditoriums;
 }

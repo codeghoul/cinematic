@@ -1,5 +1,6 @@
 package me.jysh.cinematic.controller;
 
+import me.jysh.cinematic.exception.HousefullException;
 import me.jysh.cinematic.model.Screening;
 import me.jysh.cinematic.model.Seat;
 import me.jysh.cinematic.repository.ScreeningRepository;
@@ -35,9 +36,11 @@ public class ScreeningController {
     }
 
     @GetMapping("/screenings/{screening_id}/seats")
-    public ResponseEntity<?> getSeatsByScreeningId(@PathVariable Long screening_id) {
+    public ResponseEntity<?> getSeatsByScreeningId(@PathVariable Long screening_id) throws HousefullException {
         List<Seat> seats = screeningService.getSeatsByScreeningId(screening_id);
-
+        if(seats.size() == 0) {
+           throw new HousefullException();
+        }
         return ResponseEntity.status(HttpStatus.OK).body(seats);
     }
 }

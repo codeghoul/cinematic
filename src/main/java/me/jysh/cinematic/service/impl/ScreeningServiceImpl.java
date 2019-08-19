@@ -1,6 +1,5 @@
 package me.jysh.cinematic.service.impl;
 
-import me.jysh.cinematic.exception.HousefullException;
 import me.jysh.cinematic.exception.ScreeningNotFoundException;
 import me.jysh.cinematic.model.Screening;
 import me.jysh.cinematic.model.Seat;
@@ -10,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Primary
@@ -26,6 +27,11 @@ public class ScreeningServiceImpl implements ScreeningService {
     @Override
     public List<Screening> getAllScreenings() {
         return screeningRepository.findAll();
+    }
+
+    @Override
+    public List<Screening> getAllScreenings(LocalDate startDate, LocalDate endDate) {
+        return screeningRepository.findAll().stream().filter(screening -> screening.getDate().isAfter(startDate) && screening.getDate().isBefore(endDate)).collect(Collectors.toList());
     }
 
     @Override
@@ -46,7 +52,7 @@ public class ScreeningServiceImpl implements ScreeningService {
     @Override
     public List<Seat> getSeatsByScreeningId(Long screening_id) {
         Screening screening = getScreeningById(screening_id);
-        if(screening.getIsFull()) {
+        if (screening.getIsFull()) {
             return new ArrayList<>();
         }
         return new ArrayList<>(screening.getAuditorium().getSeats());
